@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --maxWorkers=4 --cache --config jest.config.js",
     "build": "webpack --config webpack.prod.js",
-    "watch": "webpack --watch --progress --config webpack.dev.js",
+    "watch": "npm run watch:webpack -- --watch & npm run watch:test",
+    "watch:webpack": "webpack --watch --progress --config webpack.dev.js",
+    "watch:test": "jest --watch --maxWorkers=4 --cache --config jest.config.js",
     "start": "webpack serve --open --config webpack.dev.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.24.5",
     "@babel/core": "^7.24.4",
     "@babel/preset-env": "^7.24.4",
     "babel-jest": "^29.7.0",

@@ -1,3 +1,5 @@
-test("example", () => {
-  expect(2 + 2).toBe(4);
+import sum from "./index";
+
+test("test sum", () => {
+  expect(sum(1, 5)).toBe(6);
 });
